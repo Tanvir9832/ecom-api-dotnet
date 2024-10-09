@@ -9,9 +9,15 @@ app.MapGet("/", () =>
     return "Api is working";
 });
 
+
+
+var products = new List<Product>(){
+    new Product("Samsung", 100),
+    new Product("Iphone", 200),
+};
 app.MapGet("/hi", () =>
 {
-    return "Hi from /hi route";
+    return Results.Ok(products);
 });
 
 app.MapPost("/", () =>
@@ -32,3 +38,4 @@ app.MapDelete("/", () =>
 
 app.Run();
 
+public record Product(string Name, decimal Price);
